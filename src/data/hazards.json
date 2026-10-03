@@ -1,0 +1,439 @@
+{
+  "meta": {
+    "version": 1,
+    "levels": {
+      "green": "The farmer can handle it alone. Give simple advice, no expert needed.",
+      "yellow": "Needs tools, parts, or skill the farmer may not have. Offer an expert service or a human callback.",
+      "red": "Fire or safety danger. Call 112 first, then arrange urgent follow-up."
+    },
+    "farmer_can_solve_values": ["yes", "partly", "no"],
+    "note": "Starter content for the agent knowledge base. LahiTapiola experts should confirm the details before real use."
+  },
+  "hazards": [
+    {
+      "id": "hay_straw", 
+      "category": "fire",
+      "name": "Hay and straw self-heating",
+      "check_question": "Have you checked the temperature of your stored hay and straw?",
+      "levels": {
+        "green": {
+          "situation": "Hay is stored dry, but the temperature has not been checked recently.",
+          "farmer_can_solve": "yes",
+          "difficult_for_farmer": "Nothing difficult at this level.",
+          "short_summary": "Probe the stack temperature, keep hay dry, and keep stacks away from barn walls.",
+          "detailed_info": [
+            "Use a hay probe or long thermometer and take readings at several spots deep inside the stack, not just near the surface.",
+            "Write the readings down with the date so you can spot a steady rise over time.",
+            "Check more often in the first weeks after storage and after any rain or damp weather.",
+            "Keep stacks dry and leave an air gap between the stack and the barn walls.",
+            "Avoid storing hay that was baled damp. If you have to, keep it separate and watch it closely."
+          ],
+          "expert_help": { "needed": false, "service_type": null, "follow_up": null },
+          "emergency_call_112": false
+        },
+        "yellow": {
+          "situation": "Hay was stored damp, is stacked against a barn wall, or there are no readings at all and the stack cannot easily be moved.",
+          "farmer_can_solve": "partly",
+          "difficult_for_farmer": "Judging how risky a damp or tightly packed stack is, and handling it safely without making it worse.",
+          "short_summary": "Monitor closely, do not pull the stack apart, and ask a LahiTapiola expert for advice.",
+          "detailed_info": [
+            "Take temperature readings every day and keep a written log of them.",
+            "Do not pull the stack apart or open it up. The extra air can make a hot stack ignite.",
+            "Move machinery, fuel, and other valuables away from the stack and the wall behind it.",
+            "Keep extinguishers and a water source close, and make sure everyone on the farm knows about the stack.",
+            "Share your readings with a LahiTapiola expert so they can advise on the safest next step."
+          ],
+          "expert_help": { "needed": true, "service_type": null, "follow_up": "human_callback" },
+          "emergency_call_112": false
+        },
+        "red": {
+          "situation": "The stack feels hot, smells burnt or sweet and smoky, shows smoke or steam, or the temperature keeps rising.",
+          "farmer_can_solve": "no",
+          "difficult_for_farmer": "Everything. Opening the stack or fighting it alone is dangerous.",
+          "short_summary": "Call 112 now, do not open up the stack, and keep people and animals away.",
+          "detailed_info": [
+            "Call 112 immediately and give the farm address.",
+            "Do not pull the stack apart or dig into it. Fresh air can turn smouldering hay into open flames.",
+            "Keep people and animals well away from the stack and the nearest buildings.",
+            "If it is safe, move machinery and fuel away from the area.",
+            "Meet the fire service at the gate and tell them where the stack is and what you have seen."
+          ],
+          "expert_help": { "needed": true, "service_type": null, "follow_up": "human_callback" },
+          "emergency_call_112": true
+        }
+      }
+    },
+    {
+      "id": "wiring_dust",
+      "category": "fire",
+      "name": "Barn wiring and dust",
+      "check_question": "Have you cleaned the dust off the lights, wiring and motors in your barn?",
+      "levels": {
+        "green": {
+          "situation": "Lights, motors, and fittings are dusty, but the wiring looks fine and nothing has tripped or heated up.",
+          "farmer_can_solve": "yes",
+          "difficult_for_farmer": "Nothing difficult at this level, as long as you only clean and never open electrical panels.",
+          "short_summary": "Switch off the power, then clean dust and cobwebs off lights, wiring, and motors.",
+          "detailed_info": [
+            "Switch off the power to the area first and let motors and lamps cool down.",
+            "Use a dry brush or a vacuum. Never use water on electrical parts.",
+            "Clean light fittings, motor housings, fans, and the outside of cables and sockets.",
+            "Do not open fuse boxes or panels. Only clean the outside.",
+            "Keep walkways clear and do not store hay, straw, or cardboard against electrical equipment.",
+            "Repeat the cleaning every season, and more often in dusty periods."
+          ],
+          "expert_help": { "needed": false, "service_type": null, "follow_up": null },
+          "emergency_call_112": false
+        },
+        "yellow": {
+          "situation": "Fuses trip often, lights flicker, plugs or cables feel warm, the wiring is old, or it has not been inspected in many years.",
+          "farmer_can_solve": "no",
+          "difficult_for_farmer": "Finding the real fault and fixing wiring safely. Repairs should only be done by a qualified electrician.",
+          "short_summary": "Stop using the affected circuit if you can, and book an electrician for an inspection.",
+          "detailed_info": [
+            "Write down which circuit or area has the problem and what you notice, such as tripping, flickering, or warm plugs.",
+            "Do not keep resetting a breaker that trips again and again. It is trying to protect you.",
+            "Do not use extension cords as permanent wiring, and do not overload sockets.",
+            "Do not try to repair wiring yourself.",
+            "Book an electrician for a full inspection and share your notes with them."
+          ],
+          "expert_help": { "needed": true, "service_type": "electrician", "follow_up": null },
+          "emergency_call_112": false
+        },
+        "red": {
+          "situation": "There is a burning smell from electrical equipment, scorch marks, sparks, a very hot socket, or smoke.",
+          "farmer_can_solve": "no",
+          "difficult_for_farmer": "Everything. Electrical fires can spread quickly and are not safe to fight alone.",
+          "short_summary": "Cut the main power only if it is safe, get out, and call 112 if there is smoke or fire.",
+          "detailed_info": [
+            "If there is smoke or fire, leave first and call 112 immediately.",
+            "Switch off the main power only if you can reach it safely and it is dry.",
+            "Never throw water on an electrical fire.",
+            "Get people and animals out if it is safe to do so.",
+            "Do not turn the power back on until an electrician has inspected the installation."
+          ],
+          "expert_help": { "needed": true, "service_type": "electrician", "follow_up": "human_callback" },
+          "emergency_call_112": true
+        }
+      }
+    },
+    {
+      "id": "grain_dryer",
+      "category": "fire",
+      "name": "Grain dryer",
+      "check_question": "Has the grain dryer been cleaned and checked before this season?",
+      "levels": {
+        "green": {
+          "situation": "The dryer runs normally but has not been cleaned yet this season.",
+          "farmer_can_solve": "yes",
+          "difficult_for_farmer": "Nothing difficult at this level.",
+          "short_summary": "Clear out chaff and dust before the season, and never leave it running unattended.",
+          "detailed_info": [
+            "Switch the dryer off, disconnect the power and the fuel supply, and let it cool fully before cleaning.",
+            "Remove chaff and dust from the burner area, fans, ducts, and floors.",
+            "Check for built up debris, and for nests or stored items near the burner.",
+            "Do a short test run with someone present and watch for anything unusual.",
+            "Stay nearby whenever it runs, and keep an extinguisher within reach."
+          ],
+          "expert_help": { "needed": false, "service_type": null, "follow_up": null },
+          "emergency_call_112": false
+        },
+        "yellow": {
+          "situation": "The burner is hard to light, the flame looks uneven, safety cutouts or controls act oddly, or there has been no technician check for a long time.",
+          "farmer_can_solve": "no",
+          "difficult_for_farmer": "Diagnosing burner and control faults, and testing safety cutouts. This needs a trained technician.",
+          "short_summary": "Do not run it until a technician has checked it.",
+          "detailed_info": [
+            "Stop using the dryer and write down what you noticed.",
+            "Never bypass or disable safety controls to keep it running.",
+            "Do not adjust the burner yourself.",
+            "Book a dryer service and ask the technician to check the safety cutouts and controls too.",
+            "Book early. Technicians get busy right before harvest."
+          ],
+          "expert_help": { "needed": true, "service_type": "dryer_service", "follow_up": null },
+          "emergency_call_112": false
+        },
+        "red": {
+          "situation": "There is fire or smoke in the dryer, a strong smell of fuel or gas, or it keeps overheating.",
+          "farmer_can_solve": "no",
+          "difficult_for_farmer": "Everything. A dryer fire can spread fast to grain and buildings.",
+          "short_summary": "Shut it down only if safe, leave the area, and call 112.",
+          "detailed_info": [
+            "Call 112 immediately.",
+            "Use the emergency stop or cut the fuel supply only if you can reach it safely.",
+            "Do not try to fight a growing fire or stay near a fuel smell.",
+            "Keep people and animals away from the dryer and nearby buildings.",
+            "Do not use the dryer again until a technician has inspected it."
+          ],
+          "expert_help": { "needed": true, "service_type": "dryer_service", "follow_up": "human_callback" },
+          "emergency_call_112": true
+        }
+      }
+    },
+    {
+      "id": "extinguishers",
+      "category": "fire",
+      "name": "Fire extinguishers and smoke alarms",
+      "check_question": "Are your fire extinguishers in date, and are they near the exits?",
+      "levels": {
+        "green": {
+          "situation": "Extinguishers exist, but the farmer is not sure about the date, the gauge, or where they are placed.",
+          "farmer_can_solve": "yes",
+          "difficult_for_farmer": "Nothing difficult at this level.",
+          "short_summary": "Check the date and gauge, put extinguishers near the exits, and test the smoke alarms.",
+          "detailed_info": [
+            "Look at the service label for the date of the last check.",
+            "Check that the pressure gauge is in the marked safe zone and that the pin and seal are intact.",
+            "Look for dents, rust, or damage on the body and hose.",
+            "Mount extinguishers near exits at a height you can reach easily, and tell everyone on the farm where they are.",
+            "Test the smoke alarms and replace the batteries if needed."
+          ],
+          "expert_help": { "needed": false, "service_type": null, "follow_up": null },
+          "emergency_call_112": false
+        },
+        "yellow": {
+          "situation": "An extinguisher is overdue for service, the gauge is outside the safe zone, it is damaged, or some buildings have none.",
+          "farmer_can_solve": "partly",
+          "difficult_for_farmer": "Servicing or refilling extinguishers, and choosing the right type and number for each building.",
+          "short_summary": "Do not rely on faulty extinguishers. Book a service or replacement.",
+          "detailed_info": [
+            "Write down which extinguishers are overdue or damaged and where they are.",
+            "Keep other precautions in place until they are serviced, such as clearing dust and removing fuel from barns.",
+            "Book an extinguisher service or replacement.",
+            "Ask the provider which types suit the barn, fuel store, and machinery sheds, and how many you need.",
+            "Ask them to show where each one should be mounted."
+          ],
+          "expert_help": { "needed": true, "service_type": "extinguisher_service", "follow_up": null },
+          "emergency_call_112": false
+        },
+        "red": {
+          "situation": "A fire has started and there is no working extinguisher, or the fire is already growing.",
+          "farmer_can_solve": "no",
+          "difficult_for_farmer": "Fighting a growing fire. Personal safety comes first.",
+          "short_summary": "Leave and call 112. Do not fight a growing fire.",
+          "detailed_info": [
+            "Call 112 immediately.",
+            "Only try a very small fire if you have a working extinguisher and a clear exit behind you.",
+            "If the fire is growing, get people and animals out if it is safe, and stay away.",
+            "Meet the fire service at the gate and tell them what is burning and where.",
+            "Replace or service all extinguishers afterwards."
+          ],
+          "expert_help": { "needed": true, "service_type": "extinguisher_service", "follow_up": "human_callback" },
+          "emergency_call_112": true
+        }
+      }
+    },
+    {
+      "id": "machinery_service",
+      "category": "vehicles",
+      "name": "Tractor and harvester servicing",
+      "check_question": "Have your tractor and harvester been serviced before this season?",
+      "levels": {
+        "green": {
+          "situation": "The machines run fine, but the pre-season service has not been done yet.",
+          "farmer_can_solve": "yes",
+          "difficult_for_farmer": "Nothing difficult for routine checks.",
+          "short_summary": "Check oil, filters, belts, tires, and lights before the season.",
+          "detailed_info": [
+            "Check engine oil, hydraulic fluid, and coolant levels.",
+            "Inspect the air filter, belts, and hoses for wear or cracks.",
+            "Check tire condition and pressure, and test all lights.",
+            "Grease the moving parts and clean the radiator and engine area of crop residue.",
+            "Keep a simple service log and stock spare filters and belts."
+          ],
+          "expert_help": { "needed": false, "service_type": null, "follow_up": null },
+          "emergency_call_112": false
+        },
+        "yellow": {
+          "situation": "Service intervals were missed, or there are leaks, strange noises, warning lights, or hard starting.",
+          "farmer_can_solve": "partly",
+          "difficult_for_farmer": "Finding the cause of noises, leaks, and warning lights, and repairing hydraulics, engines, or brakes.",
+          "short_summary": "Avoid heavy use and book a mechanic before harvest.",
+          "detailed_info": [
+            "Write down the symptoms, such as when the noise happens or where the leak is.",
+            "Do not ignore warning lights or keep working a machine that is getting worse.",
+            "Avoid long or heavy use until it has been checked.",
+            "Book a mechanic early, since workshops fill up around harvest.",
+            "Ask them to check brakes, steering, and anything involving fuel or hydraulic lines."
+          ],
+          "expert_help": { "needed": true, "service_type": "mechanic", "follow_up": null },
+          "emergency_call_112": false
+        },
+        "red": {
+          "situation": "There is a fuel or hydraulic leak near hot parts, smoke, a burning smell, or brake or steering failure.",
+          "farmer_can_solve": "no",
+          "difficult_for_farmer": "Everything. A leak near hot parts can start a fire, and failed brakes or steering are not safe to work with.",
+          "short_summary": "Stop the engine if safe, get away from the machine, and call 112 if there is fire or smoke.",
+          "detailed_info": [
+            "Stop the machine and switch off the engine only if it is safe to do so.",
+            "Get away from the machine and keep others away.",
+            "If there is smoke or fire, call 112 immediately.",
+            "Do not restart the machine or drive it to the workshop.",
+            "Have it towed or repaired on site by a mechanic."
+          ],
+          "expert_help": { "needed": true, "service_type": "mechanic", "follow_up": "human_callback" },
+          "emergency_call_112": true
+        }
+      }
+    },
+    {
+      "id": "theft",
+      "category": "vehicles",
+      "name": "Theft of machines, tools, and diesel",
+      "check_question": "Are your machines, tools and diesel locked up overnight?",
+      "levels": {
+        "green": {
+          "situation": "Things are usually locked up, but there is no lighting, no photos, and no record of serial numbers.",
+          "farmer_can_solve": "yes",
+          "difficult_for_farmer": "Nothing difficult at this level.",
+          "short_summary": "Lock everything up at night, add lighting, and record serial numbers.",
+          "detailed_info": [
+            "Lock sheds and fuel stores, and lock the machines and fuel caps.",
+            "Never leave keys in vehicles or in obvious spots near them.",
+            "Add outdoor lighting near the yard and sheds.",
+            "Photograph serial numbers and keep a copy somewhere off the farm, such as in the cloud or with family.",
+            "Tell trusted neighbors when you are away."
+          ],
+          "expert_help": { "needed": false, "service_type": null, "follow_up": null },
+          "emergency_call_112": false
+        },
+        "yellow": {
+          "situation": "Valuable equipment is left in an open yard, a past theft or attempt has happened, or there have been incidents nearby.",
+          "farmer_can_solve": "partly",
+          "difficult_for_farmer": "Choosing and installing cameras, alarms, trackers, and secure storage.",
+          "short_summary": "Improve physical security with help from a security installer.",
+          "detailed_info": [
+            "Move the most valuable equipment into a locked building if you can.",
+            "Ask a security installer about lighting, cameras, alarms, and GPS trackers for machines.",
+            "Consider anchoring heavy tools or equipment so they are harder to move.",
+            "Report any suspicious activity to the police.",
+            "Ask for a LahiTapiola callback if you want to discuss how to protect your equipment."
+          ],
+          "expert_help": { "needed": true, "service_type": "security_installer", "follow_up": null },
+          "emergency_call_112": false
+        },
+        "red": {
+          "situation": "A theft is happening right now, or intruders are on the farm.",
+          "farmer_can_solve": "no",
+          "difficult_for_farmer": "Everything. Do not confront anyone.",
+          "short_summary": "Stay safe, do not confront anyone, and call 112.",
+          "detailed_info": [
+            "Stay inside and call 112 immediately.",
+            "Do not confront the people. Equipment can be replaced, you cannot.",
+            "Note what you see, such as vehicles, number of people, and direction they went.",
+            "Do not touch the area afterwards until the police say it is fine.",
+            "Ask for a LahiTapiola callback to discuss next steps."
+          ],
+          "expert_help": { "needed": true, "service_type": null, "follow_up": "human_callback" },
+          "emergency_call_112": true
+        }
+      }
+    },
+    {
+      "id": "working_alone",
+      "category": "health",
+      "name": "Working alone in risky places",
+      "check_question": "When you work alone with machinery or in manure pits, does someone know where you are?",
+      "levels": {
+        "green": {
+          "situation": "The farmer sometimes works alone and carries a phone, but nobody knows the plan for the day.",
+          "farmer_can_solve": "yes",
+          "difficult_for_farmer": "Nothing difficult at this level.",
+          "short_summary": "Agree a check-in time with someone, and always carry a charged phone.",
+          "detailed_info": [
+            "Pick one person, such as family or a neighbor, and agree a time to check in each day.",
+            "Tell them roughly where you will be working.",
+            "Keep your phone charged and on you, not in the cab or in the house.",
+            "Agree what they should do if you do not check in, for example call you, then come and look.",
+            "Put emergency numbers and the farm address near the phone."
+          ],
+          "expert_help": { "needed": false, "service_type": null, "follow_up": null },
+          "emergency_call_112": false
+        },
+        "yellow": {
+          "situation": "The farmer regularly works alone in manure pits, tanks, or other confined spaces, or with heavy machinery, without training or gas detection.",
+          "farmer_can_solve": "no",
+          "difficult_for_farmer": "Confined space and pit work needs gas detection equipment and proper training. Gas can be deadly without any warning smell.",
+          "short_summary": "Never enter pits or confined spaces alone. Get gas detection and safety training.",
+          "detailed_info": [
+            "Do not enter a manure pit, tank, or other confined space alone, even briefly.",
+            "Ventilate before any work, and keep the opening clear.",
+            "Use a proper gas detector and make sure someone stays outside as an observer.",
+            "Look into safety training for confined space work.",
+            "Ask for a LahiTapiola callback if you want help finding training or equipment."
+          ],
+          "expert_help": { "needed": true, "service_type": "safety_training", "follow_up": null },
+          "emergency_call_112": false
+        },
+        "red": {
+          "situation": "Someone is down, injured, or not responding, or there is a gas smell in a pit or enclosed space.",
+          "farmer_can_solve": "no",
+          "difficult_for_farmer": "Everything. Going in after the person is how many people get hurt.",
+          "short_summary": "Do not go in. Call 112 immediately.",
+          "detailed_info": [
+            "Call 112 right away and give the farm address.",
+            "Do not enter the pit or space to rescue the person. Gas can overcome you in seconds.",
+            "If you can do it safely from outside, ventilate the space.",
+            "Send someone to the gate to guide the responders in.",
+            "Stay on the phone and follow the instructions you are given."
+          ],
+          "expert_help": { "needed": true, "service_type": null, "follow_up": "human_callback" },
+          "emergency_call_112": true
+        }
+      }
+    },
+    {
+      "id": "backup_person",
+      "category": "health",
+      "name": "Who runs the farm if the farmer is sick or injured",
+      "check_question": "If you were out sick or injured for two weeks, does someone know the daily routine on the farm?",
+      "levels": {
+        "green": {
+          "situation": "Someone informally knows the routine, but nothing is written down.",
+          "farmer_can_solve": "yes",
+          "difficult_for_farmer": "Nothing difficult at this level.",
+          "short_summary": "Write a one page sheet with routines and contacts, and share it with your backup person.",
+          "detailed_info": [
+            "List the daily tasks, such as feeding, milking, and machine checks, with times and quantities.",
+            "Add key contacts, such as the vet, mechanic, supplier, and neighbors.",
+            "Note where keys, codes, and important documents are kept.",
+            "Give a copy to your backup person and keep one in the house.",
+            "Review the sheet at the start of each season."
+          ],
+          "expert_help": { "needed": false, "service_type": null, "follow_up": null },
+          "emergency_call_112": false
+        },
+        "yellow": {
+          "situation": "Nobody could run the farm if the farmer were ill or injured for a couple of weeks.",
+          "farmer_can_solve": "partly",
+          "difficult_for_farmer": "Finding someone reliable and trained to cover the work, which may take time or outside help.",
+          "short_summary": "Find and brief a backup person, and ask for a LahiTapiola callback about your options.",
+          "detailed_info": [
+            "Think about relatives, neighbors, or other farmers who could step in, and ask them.",
+            "Walk the person through the daily routine and the equipment while you are healthy.",
+            "Look into local farm relief or substitute services.",
+            "Write the one page routine sheet and share it.",
+            "Ask for a LahiTapiola callback to talk through how to plan for this."
+          ],
+          "expert_help": { "needed": true, "service_type": null, "follow_up": "human_callback" },
+          "emergency_call_112": false
+        },
+        "red": {
+          "situation": "The farmer is ill or injured right now, animals or machines need urgent care, and nobody can cover.",
+          "farmer_can_solve": "no",
+          "difficult_for_farmer": "Arranging cover quickly while unwell.",
+          "short_summary": "Call 112 if it is serious, then call your backup contact and ask for an urgent callback.",
+          "detailed_info": [
+            "If it is a medical emergency, call 112 first.",
+            "Then call family, a neighbor, or your backup person and ask them to cover the urgent tasks.",
+            "Give them the one page routine sheet if you have one, or tell them the most urgent tasks first, such as feeding and milking.",
+            "Ask for an urgent LahiTapiola callback so someone can help arrange cover.",
+            "Focus on getting better. Animals and machines can wait a short while for the right help."
+          ],
+          "expert_help": { "needed": true, "service_type": null, "follow_up": "human_callback" },
+          "emergency_call_112": true
+        }
+      }
+    }
+  ]
+}

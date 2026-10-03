@@ -1,32 +1,34 @@
-import express from "express";
-import dotenv from "dotenv";
+import "dotenv/config";
+
+import app from "./app.js";
 import sequelize from "./config/database.js";
 
-dotenv.config();
-
-const app = express();
-
-app.use(express.json());
-
-app.get("/", (req, res) => {
-  res.json({
-    message: "Backend is running",
-  });
-});
-
-const PORT = process.env.PORT || 3000;
+const PORT =
+  process.env.PORT || 3000;
 
 const startServer = async () => {
   try {
     await sequelize.authenticate();
 
-    console.log("PostgreSQL connected");
+    console.log(
+      "Database connection established."
+    );
 
-    app.listen(PORT, () => {
-      console.log(` Server running on http://localhost:${PORT}`);
-    });
+    app.listen(
+      PORT,
+      () => {
+        console.log(
+          `Server running on http://localhost:${PORT}`
+        );
+      }
+    );
   } catch (error) {
-    console.error(" Database connection failed:", error);
+    console.error(
+      "Failed to start server:",
+      error
+    );
+
+    process.exit(1);
   }
 };
 
