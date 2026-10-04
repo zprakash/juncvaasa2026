@@ -2,7 +2,7 @@ import express from "express";
 import cors from "cors";
 
 import hazardRoutes from "./routes/hazardRoutes.js";
-
+import hazardLogRoutes from "./routes/hazardLogRoutes.js";
 const app = express();
 
 app.use(
@@ -41,5 +41,7 @@ app.use(
   "/api/v1/hazards",
   hazardRoutes
 );
+
+app.use("/api/v1/logs", hazardLogRoutes);
 
 export default app;

@@ -14,6 +14,12 @@ const startServer = async () => {
       "Database connection established."
     );
 
+    await sequelize.sync();
+
+    console.log(
+      "Database synchronized."
+    );
+
     app.listen(
       PORT,
       () => {
